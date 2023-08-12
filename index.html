@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pr-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 01</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div class="container containerPosition">
+            <label for="user" id="labelUser">Username<span id="texto1"></span></label>
+            <input type="text" id="user" class="input1" maxlength="10">
+            <label for="pass" id="labelPass">Password<span id="texto2"></span></label>
+            <input type="password" id="pass" class="input2" maxlength="10">
+            <button class="btn">ENTER</button>
+        </div>
+
+        <div class="container">
+            <div class="loader loaderAnimation"></div>
+        </div>
+
+        <div class="container">
+            <div class="containerLoader">
+                <div class="loader loaderAnimation2"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="containerMove">
+                <div class="div1"></div>
+                <div class="div2"></div>
+                <div class="div3"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="barra"></div>
+        </div>
+
+        <div class="container">
+            <div class="containerGoblin">
+                <div class="goblin-down"></div>
+                <div class="goblin-right"></div>
+                <div class="goblin-up"></div>
+                <div class="goblin-left"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        input1 = document.getElementById("user")
+        input2 = document.getElementById("pass")
+        label1 = document.getElementById("labelUser")
+        label2 = document.getElementById("labelPass")
+        texto1 = document.getElementById("texto1")
+        texto2 = document.getElementById("texto2")
+
+        input1.addEventListener("focus", upper) 
+        input2.addEventListener("focus", upper) 
+        input1.addEventListener("blur", lower)
+        input2.addEventListener("blur", lower)
+
+        function upper (event) {
+            if(input1 == document.activeElement) {
+                label1.style.transform = "translate(0, -17px) scale(1.2)"
+                texto1.innerText = ":"
+            }
+            if(input2 == document.activeElement) {
+                label2.style.transform = "translate(0, -17px) scale(1.2)"
+                texto2.innerText = ":"
+            }
+        }
+        
+        function lower (event) {
+            if (input1.value.length == 0) {
+                label1.style.transform = "translate(0, 0) scale(1)"
+                texto1.innerText = ""
+            }
+            if (input2.value.length == 0) {
+                label2.style.transform = "translate(0, 0) scale(1)"
+                texto2.innerText = ""
+            }
+        }
+
+        goblinUp = document.querySelector(".goblin-up")
+        goblinDown = document.querySelector(".goblin-down")
+        goblinLeft = document.querySelector(".goblin-left")
+        goblinRight = document.querySelector(".goblin-right")
+        goblinDown.style.display = "block"
+
+        setInterval(function() {
+            if(goblinUp.style.display == "block") {
+                goblinUp.style.display = "none"
+                goblinRight.style.display = "block"
+            } else if(goblinRight.style.display == "block") {
+                goblinRight.style.display = "none"
+                goblinDown.style.display = "block"
+            } else if(goblinDown.style.display == "block") {
+                goblinDown.style.display = "none"
+                goblinLeft.style.display = "block"
+            } else if (goblinLeft.style.display == "block") {
+                goblinLeft.style.display = "none"
+                goblinUp.style.display = "block"
+            }
+        }, 4000)
+    </script>            
+</body>
+</html>
