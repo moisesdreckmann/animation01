@@ -108,6 +108,13 @@
     font-family: monospace, Helvetica, sans-serif;
 }
 
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 section {
     margin: auto;
     display: flex;
