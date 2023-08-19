@@ -1,14 +1,23 @@
-input1 = document.getElementById("user")
-input2 = document.getElementById("pass")
-label1 = document.getElementById("labelUser")
-label2 = document.getElementById("labelPass")
-texto1 = document.getElementById("texto1")
-texto2 = document.getElementById("texto2")
-
+let input1 = document.getElementById("user")
+let input2 = document.getElementById("pass")
+let label1 = document.getElementById("labelUser")
+let label2 = document.getElementById("labelPass")
+let texto1 = document.getElementById("texto1")
+let texto2 = document.getElementById("texto2")
 input1.addEventListener("focus", upper) 
 input2.addEventListener("focus", upper) 
 input1.addEventListener("blur", lower)
 input2.addEventListener("blur", lower)
+
+let goblinUp = document.querySelector(".goblin-up")
+let goblinDown = document.querySelector(".goblin-down")
+let goblinLeft = document.querySelector(".goblin-left")
+let goblinRight = document.querySelector(".goblin-right")
+goblinDown.style.display = "block"
+
+let navBar = document.querySelector(".retanguloWrapper")
+let bars = document.querySelectorAll(".retangulo")
+navBar.addEventListener("click", alterarEstado)
 
 function upper (event) {
     if(input1 == document.activeElement) {
@@ -32,11 +41,21 @@ function lower (event) {
     }
 }
 
-goblinUp = document.querySelector(".goblin-up")
-goblinDown = document.querySelector(".goblin-down")
-goblinLeft = document.querySelector(".goblin-left")
-goblinRight = document.querySelector(".goblin-right")
-goblinDown.style.display = "block"
+function alterarEstado(event) {
+    if(bars[1].style.display == "none") {
+        bars[1].style.display = "flex";
+        bars[0].style.transform = "translateY(0) rotate(0)"
+        bars[2].style.transform = "translateY(0) rotate(0)"
+        navBar.style.backgroundColor = "black"
+    } else {
+        bars[1].style.display = "none";
+        bars[0].style.transform = "translateY(8px) rotate(45deg)"
+        bars[0].style.transition = "transform .5s"
+        bars[2].style.transform = "translateY(-8px) rotate(-45deg)"
+        bars[2].style.transition = "transform .5s"
+        navBar.style.backgroundColor = "red"
+    }
+}
 
 setInterval(function() {
     if(goblinUp.style.display == "block") {
@@ -53,3 +72,8 @@ setInterval(function() {
         goblinUp.style.display = "block"
     }
 }, 4000)
+
+
+
+
+
