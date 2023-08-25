@@ -1,7 +1,8 @@
 #### ANIMATION CSS/JS
 
 Algumas animações interessantes, de login de formulario, barra de carregamento,  
-loading, navBar interativo, e um goblin em constante movimento utilizando sprite e JS para controle.
+loading, eskeleton para carregamento de imagens navBar interativo, e um goblin  
+em constante movimento utilizando sprite e JS para controle.
 
 Utilizado:
 * Position, transform, translate, e animation CSS
